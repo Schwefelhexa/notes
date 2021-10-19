@@ -75,3 +75,39 @@ Idee: Speichere die letzten $k$ gelesenen Zeichen aus dem Band in den Zuständen
   - Variablen: 1 Band pro Variable
   - Arrays: 1 Band pro Array, Trennzeichen zwischen Einträgen
   - Unterprogramme: Spur als Prozedurstack (rekursion möglich)
+
+## Mehrbändige Turing-Maschinen
+
+<!-- TODO Foto hinzufügen, sobald Folien online sind -->
+
+- Echte Erweiterung: Neue Definition
+- Neue Übergangsfunktion (für $k$ Bänder): $\delta : (Q \backslash \{\bar{q}\}) \times \Gamma^k \rarr Q \times \Gamma^k \times \{R,L,N\}^k$
+- Mehrere **unabhängige** Köpfe
+- Band 1 für Ein-/Ausgabe, alle anderen beginnen mit $B$s gefüllt
+
+:::info
+Idee: Gleich mächtig wie eine normale Turing-Maschine, aber einfacher zu nutzen
+:::
+
+### Äquivalente 1-Band-Maschinen
+
+- **Satz**: Eine $k$-Band-TM $M$ mit Zeitbedarf $t(n)$ und Speicherbedarf $s(n)$ ist äquivalent zu einer 1-Band-TM $M´$ mit Zeitbedarf $O(t^2(n))$ und Speicherbedarf $O(s(n))$
+- Beweisskizze: Nutze $2k$ Spuren
+  - Ungerade Spuren (1, 3, ...): Bandinhalte
+  - Gerade Spuren (2, 4, ...): Position des jeweiligen Kopfes
+- Simulation der Rechenschritte: Siehe Folien zur VL 2 vom 19.10.2021 <sub><sup>(Ja, ich war zu faul)</sup></sub>
+
+## Universelle Turing-Maschinen
+
+- **Ziel:** Führe eine beliebige TM $M$ aus
+- Kodierung als Gödel-Nummer[^1]
+  - Präfixfrei: Beginnt und endet mit 111, im Wort kommt 111 nicht vor
+  - Einschränkungen: Anfangszustand ist $q_1$, Endzustand ist $q_2$, Alphabet $\Gamma = \{1,0,B\}$
+  - Der Übergang $\delta (q_i,X_j) = (q_k,X_l,D_m)$ wird mit $(0^i)1(0^j)1(0^k)1(0^l)1(0^m)$ kodiert $=: \text{code}(t)$
+  - Die Maschine $M$ wird als Menge aller Übergänge codiert: $111 \ \text{code}(1) \ 11 \ \text{code}(2) \ 11 \ ... \ \text{code}(s) \ 111$
+- Implementation mittels 3-Band-Maschine:
+  - Band 1: Simuliert Band von $M$
+  - Band 2: Beinhaltet Gödelnummer von $M$
+  - Band 3: Aktueller Zustand von $M$
+
+[^1]: (Mehr oder weniger fun) fact: Nachdem sein Freund Moritz Schlick ermordet wurde, entwickelte Gödel eine Angststörung, er könne vergiftet werden. Deshalb ließ er sich nur von seiner Frau bekochen. Kurz nach ihrem Tod ist er verhungert, da er nichts mehr aß.
