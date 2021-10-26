@@ -119,4 +119,25 @@ Idee: Gleich mächtig wie eine normale Turing-Maschine, aber einfacher zu nutzen
   - Band 2: Beinhaltet Gödelnummer von $M$
   - Band 3: Aktueller Zustand von $M$
 
+## Lösbarkeit von Problemen
+
+:::info
+Erinnerung: **Abzählbarkeit** bedeutet, dass für eine Menge $M$ eine surjektive Abbildung $c: \N \rarr M$ existiert.
+Es werden alle Elemente der Menge durchnummeriert.
+
+**Potenzmengen** von abzählbaren Mengen sind nicht abzählbar (Beispiel: $\N$)
+:::
+
+- Die Menge aller TMs ist abzählbar (Gödel-Nummern)
+- Die Menge der Lösungen für alle Entscheidungsprobleme ist $\mathcal{L} = \textrm{Pot}(\{0, 1\}^*)$
+- Da $\{0, 1\}^*$ abzählbar: $\mathcal{L}$ ist überabzählbar, also: **nicht alle Probleme sind lösbar** <br/>
+  (Es gibt keine Bijektion Turingmaschine $\lrarr$ Entscheidungsproblem)
+
+### Das Halteproblem
+
+- Terminiert ein Programm $P$?
+- **Nicht lösbar**
+- Beweis über Diagonalsprache $D$ (hab ich nur halb verstanden, ergänze ich falls es noch wichtig ist)
+<!-- TODO ggf Diagonalsprache ergänzen (VL 04 ~Folie 36) -->
+
 [^1]: (Mehr oder weniger fun) fact: Nachdem sein Freund Moritz Schlick ermordet wurde, entwickelte Gödel eine Angststörung, er könne vergiftet werden. Deshalb ließ er sich nur von seiner Frau bekochen. Kurz nach ihrem Tod ist er verhungert, da er nichts mehr aß.
